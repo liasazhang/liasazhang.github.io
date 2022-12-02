@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> - 迪士尼在逃小公主</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="迪士尼在逃小公主的个人博客,
+title:力扣刷题将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。
+比如输入字符串为 &amp;quot;PAYPALISHIRING&amp;quot; 行数为,"> 
+    <meta name="author" content="zhangguanxin"> 
+    <link rel="alternative" href="atom.xml" title="迪士尼在逃小公主" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content=" - 迪士尼在逃小公主"/>
+    <meta name="twitter:description" content="迪士尼在逃小公主的个人博客,
+title:力扣刷题将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。
+比如输入字符串为 &amp;quot;PAYPALISHIRING&amp;quot; 行数为,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="迪士尼在逃小公主"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content=" - 迪士尼在逃小公主"/>
+    <meta property="og:description" content="迪士尼在逃小公主的个人博客,
+title:力扣刷题将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。
+比如输入字符串为 &amp;quot;PAYPALISHIRING&amp;quot; 行数为,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">迪士尼在逃小公主</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle"></h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title"></h1>
+        <div class="stuff">
+            <span>十二月 02, 2022</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <hr>
+<h2 id="title-力扣刷题"><a href="#title-力扣刷题" class="headerlink" title="title:力扣刷题"></a>title:力扣刷题</h2><p>将一个给定字符串 <code>s</code> 根据给定的行数 <code>numRows</code> ，以从上往下、从左到右进行 Z 字形排列。</p>
+<p>比如输入字符串为 <code>&quot;PAYPALISHIRING&quot;</code> 行数为 <code>3</code> 时，排列如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P   A   H   N</span><br><span class="line">A P L S I I G</span><br><span class="line">Y   I   R</span><br></pre></td></tr></table></figure>
+
+<p>之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如：<code>&quot;PAHNAPLSIIGYIR&quot;</code>。</p>
+<p>请你实现这个将字符串进行指定行数变换的函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string convert(string s, int numRows);</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s = &quot;PAYPALISHIRING&quot;, numRows = 3</span><br><span class="line">输出：&quot;PAHNAPLSIIGYIR&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">convert</span><span class="params">(String s, <span class="type">int</span> numRows)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(numRows&lt;<span class="number">2</span>)<span class="keyword">return</span> s;</span><br><span class="line">        List&lt;StringBuilder&gt; rows = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;StringBuilder&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;numRows;i++)&#123;rows.add(<span class="keyword">new</span> <span class="title class_">StringBuilder</span>());&#125;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">res</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> s.length();</span><br><span class="line">        <span class="type">int</span> <span class="variable">h</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">flag</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">char</span> c:s.toCharArray())&#123;</span><br><span class="line">            rows.get(h).append(c);</span><br><span class="line">            <span class="keyword">if</span>(h==<span class="number">0</span>||h==numRows-<span class="number">1</span>)&#123;flag = -flag;&#125;</span><br><span class="line">            h+=flag;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;numRows;i++)</span><br><span class="line">        res.append(rows.get(i));</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>思路巧妙点：设立了flag充当转换头，就像贪吃蛇遇到墙方向折返的道理，如果到达边界就将转换头取反为-1,再不停加它，就达到了方向跳投的效果</p>
+<p>这里用的ArrayList与StringBuilder都需要new</p>
+<p>ArrayList———list.add,     list.get(i)</p>
+<p>String——–str.toCharArray()   str.chatAt(i)</p>
+<p>StringBuilder————–append()</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
