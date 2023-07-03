@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title> - 迪士尼在逃小公主</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="迪士尼在逃小公主的个人博客,安卓延时函数按钮点击触发事件5s如何实现？
+消息延时发送，
+自定义view右边字母表：
+加载动画的实现原理：先让动画显示，之后跟更新函数，更新函数中异步发送请求，因为拿取网络结果耗时，放到子线程中，,"> 
+    <meta name="author" content="zhangguanxin"> 
+    <link rel="alternative" href="atom.xml" title="迪士尼在逃小公主" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content=" - 迪士尼在逃小公主"/>
+    <meta name="twitter:description" content="迪士尼在逃小公主的个人博客,安卓延时函数按钮点击触发事件5s如何实现？
+消息延时发送，
+自定义view右边字母表：
+加载动画的实现原理：先让动画显示，之后跟更新函数，更新函数中异步发送请求，因为拿取网络结果耗时，放到子线程中，,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="迪士尼在逃小公主"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content=" - 迪士尼在逃小公主"/>
+    <meta property="og:description" content="迪士尼在逃小公主的个人博客,安卓延时函数按钮点击触发事件5s如何实现？
+消息延时发送，
+自定义view右边字母表：
+加载动画的实现原理：先让动画显示，之后跟更新函数，更新函数中异步发送请求，因为拿取网络结果耗时，放到子线程中，,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">迪士尼在逃小公主</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle"></h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title"></h1>
+        <div class="stuff">
+            <span>七月 03, 2023</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h3 id="安卓延时函数"><a href="#安卓延时函数" class="headerlink" title="安卓延时函数"></a>安卓延时函数</h3><p>按钮点击触发事件5s如何实现？</p>
+<p>消息延时发送，</p>
+<h3 id="自定义view"><a href="#自定义view" class="headerlink" title="自定义view"></a>自定义view</h3><p>右边字母表：</p>
+<h4 id="加载动画的实现原理："><a href="#加载动画的实现原理：" class="headerlink" title="加载动画的实现原理："></a>加载动画的实现原理：</h4><p>先让动画显示，之后跟更新函数，更新函数中异步发送请求，因为拿取网络结果耗时，放到子线程中，ui线程接受消息，让动画隐藏。</p>
+<h3 id="消息队列底层是什么？"><a href="#消息队列底层是什么？" class="headerlink" title="消息队列底层是什么？"></a>消息队列底层是什么？</h3><p>messagequeue是单链表。每个线程中可以有多个Handler，即一个Looper可以处理来自多个Handler的消息。 Looper中维护一个MessageQueue，来维护消息队列，消息队列中的Message可以来自不同的Handler。<strong>当next()取出下一条消息时，队列中已经没有消息时，next()会无限循环，产生阻塞。等待MessageQueue中加入消息，然后重新唤醒。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Handler</span>().postDelayed(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// do something</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="number">500</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>一个线程有几个Handler?怎么保证的？</strong><br>多个，同步锁；handler可以进行线程切换，rxjava也可以</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">Message <span class="title function_">next</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// Return here if the message loop has already quit and been disposed.</span></span><br><span class="line">        <span class="comment">// This can happen if the application tries to restart a looper after quit</span></span><br><span class="line">        <span class="comment">// which is not supported.</span></span><br><span class="line">        <span class="keyword">final</span> <span class="type">long</span> <span class="variable">ptr</span> <span class="operator">=</span> mPtr; <span class="comment">// 1、吧成员变量mPtr的值赋值给本地变量ptr </span></span><br><span class="line">        <span class="keyword">if</span> (ptr == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 初始时设置0，代表第一次不需要阻塞。</span></span><br><span class="line">        <span class="comment">//nextPollTimeoutMillis = -1 代表无限等待。</span></span><br><span class="line">        <span class="comment">//nextPollTimeoutMillis = 正值m 代表阻塞等待m后唤醒线程。</span></span><br><span class="line"> <span class="type">int</span> <span class="variable">nextPollTimeoutMillis</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"> <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//执行native层的nativePollOnce进行阻塞线程：</span></span><br><span class="line">   <span class="comment">//1、可通过调用native层的nativeWake(mPtr);来唤醒线程。</span></span><br><span class="line">   <span class="comment">//2、当nextPollTimeoutMillis这个延期时间到了会自动唤醒当前线程。</span></span><br><span class="line">    nativePollOnce(ptr, nextPollTimeoutMillis); </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意这个锁代码块：</span></span><br><span class="line">    <span class="comment">//1、有消息时取消息</span></span><br><span class="line">    <span class="comment">//2、无消息时阻塞等待</span></span><br><span class="line">    <span class="comment">//ps：退出时也即return null 代表当前进程会结束。</span></span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="built_in">this</span>) &#123;</span><br><span class="line">    </span><br><span class="line">                <span class="comment">// 根据now时间相对顺序查找链表中的目标消息</span></span><br><span class="line">                <span class="keyword">final</span> <span class="type">long</span> <span class="variable">now</span> <span class="operator">=</span> SystemClock.uptimeMillis();</span><br><span class="line">                <span class="type">Message</span> <span class="variable">prevMsg</span> <span class="operator">=</span> <span class="literal">null</span>; <span class="comment">//目标消息的上一节点</span></span><br><span class="line">                <span class="type">Message</span> <span class="variable">msg</span> <span class="operator">=</span> mMessages;<span class="comment">//创建临时头结点，并赋值。</span></span><br><span class="line">                </span><br><span class="line">                <span class="comment">//非普通消息的寻找（不了解屏障消息、异步消息的可以先不看）</span></span><br><span class="line">                <span class="keyword">if</span> (msg != <span class="literal">null</span> &amp;&amp; msg.target == <span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="comment">// Stalled by a barrier.  Find the next asynchronous message in the queue.</span></span><br><span class="line">                    <span class="keyword">do</span> &#123;</span><br><span class="line">                        prevMsg = msg;</span><br><span class="line">                        msg = msg.next;</span><br><span class="line">                    &#125; <span class="keyword">while</span> (msg != <span class="literal">null</span> &amp;&amp; !msg.isAsynchronous());</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 普通消息的取出</span></span><br><span class="line">                <span class="comment">//去头部消息出队，取时要判断是否满足取出条件             </span></span><br><span class="line">                <span class="keyword">if</span> (msg != <span class="literal">null</span>) &#123;               </span><br><span class="line">                <span class="comment">//当前时间&lt;头结点消息的when时间，</span></span><br><span class="line">                <span class="comment">//代表消息还未到执行时间，则继续阻塞，到时间唤醒。</span></span><br><span class="line">                    <span class="keyword">if</span> (now &lt; msg.when) &#123;                    </span><br><span class="line">                        <span class="comment">//消息的执行时间还未到，设置一个超时时间，到时间时唤醒。</span></span><br><span class="line">                        nextPollTimeoutMillis = (<span class="type">int</span>) Math.min(msg.when - now, Integer.MAX_VALUE);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">// Got a message.</span></span><br><span class="line">                        mBlocked = <span class="literal">false</span>;</span><br><span class="line">                        <span class="keyword">if</span> (prevMsg != <span class="literal">null</span>) &#123;</span><br><span class="line">                            prevMsg.next = msg.next;</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            mMessages = msg.next;</span><br><span class="line">                        &#125;</span><br><span class="line">                        msg.next = <span class="literal">null</span>;</span><br><span class="line">                        <span class="keyword">if</span> (DEBUG) Log.v(TAG, <span class="string">&quot;Returning message: &quot;</span> + msg);</span><br><span class="line">                        msg.markInUse();</span><br><span class="line">                        <span class="keyword">return</span> msg;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 无消息时，无限等待。也即线程无限休眠</span></span><br><span class="line">                    nextPollTimeoutMillis = -<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (mQuitting) &#123;</span><br><span class="line">                    dispose();</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">                &#125;</span><br><span class="line">    &#125;<span class="comment">// 锁代码块结尾</span></span><br><span class="line">  </span><br><span class="line">            <span class="comment">// While calling an idle handler, a new message could have been delivered</span></span><br><span class="line">            <span class="comment">// so go back and look again for a pending message without waiting.</span></span><br><span class="line">            nextPollTimeoutMillis = <span class="number">0</span>;</span><br><span class="line"> &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>消息队列其实底层使用单链表实现的，enqueueMessage入队操作具体是根据消息的when字段相对时间来决定消息在链表中的顺序。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
