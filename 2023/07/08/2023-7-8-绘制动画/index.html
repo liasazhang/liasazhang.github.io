@@ -5,12 +5,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>安卓IPC原理学习 - 迪士尼在逃小公主</title>
+    <title> - 迪士尼在逃小公主</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="迪士尼在逃小公主的个人博客,LruCache是个泛型类，主要算法原理是把最近使用的对象用强引用（即我们平常使用的对象引用方式）存储在 LinkedHashMap 中。当缓存满时，把最近最少使用的对象从内存中移除，并提供了get,"> 
+    <meta name="description" content="迪士尼在逃小公主的个人博客,绘制动画
+context的意义？
+build gradle module
+xml布局中通过类名，反射应用构造函数，构造对应的java类型。
+自定义属性自定义主题有的话如何去解析，用defStyleA,"> 
     <meta name="author" content="zhangguanxin"> 
     <link rel="alternative" href="atom.xml" title="迪士尼在逃小公主" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -18,16 +22,24 @@
     
     
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="安卓IPC原理学习 - 迪士尼在逃小公主"/>
-    <meta name="twitter:description" content="迪士尼在逃小公主的个人博客,LruCache是个泛型类，主要算法原理是把最近使用的对象用强引用（即我们平常使用的对象引用方式）存储在 LinkedHashMap 中。当缓存满时，把最近最少使用的对象从内存中移除，并提供了get,"/>
+    <meta name="twitter:title" content=" - 迪士尼在逃小公主"/>
+    <meta name="twitter:description" content="迪士尼在逃小公主的个人博客,绘制动画
+context的意义？
+build gradle module
+xml布局中通过类名，反射应用构造函数，构造对应的java类型。
+自定义属性自定义主题有的话如何去解析，用defStyleA,"/>
     
     
     
     
     <meta property="og:site_name" content="迪士尼在逃小公主"/>
     <meta property="og:type" content="object"/>
-    <meta property="og:title" content="安卓IPC原理学习 - 迪士尼在逃小公主"/>
-    <meta property="og:description" content="迪士尼在逃小公主的个人博客,LruCache是个泛型类，主要算法原理是把最近使用的对象用强引用（即我们平常使用的对象引用方式）存储在 LinkedHashMap 中。当缓存满时，把最近最少使用的对象从内存中移除，并提供了get,"/>
+    <meta property="og:title" content=" - 迪士尼在逃小公主"/>
+    <meta property="og:description" content="迪士尼在逃小公主的个人博客,绘制动画
+context的意义？
+build gradle module
+xml布局中通过类名，反射应用构造函数，构造对应的java类型。
+自定义属性自定义主题有的话如何去解析，用defStyleA,"/>
     
 <link rel="stylesheet" href="/css/diaspora.css">
 
@@ -45,7 +57,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">安卓IPC原理学习</h3>
+    <h3 class="subtitle"></h3>
     <div class="social">
         <div>
             <div class="share">
@@ -60,90 +72,23 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">安卓IPC原理学习</h1>
+        <h1 class="title"></h1>
         <div class="stuff">
-            <span>七月 03, 2023</span>
+            <span>七月 08, 2023</span>
             
 
         </div>
         <div class="content markdown">
-            <p>LruCache是个泛型类，主要算法原理是把最近使用的对象用强引用（即我们平常使用的对象引用方式）存储在 LinkedHashMap 中。当缓存满时，把最近最少使用的对象从内存中移除，并提供了get和put方法来完成缓存的获取和添加操作。<br>而LinkedHashMap是由数组+双向链表的数据结构来实现的。其中双向链表的结构可以实现访问顺序和插入顺序，使得LinkedHashMap中的对按照一定顺序排列起来。<br><img src="/image.png" alt="Alt text"><br>&#96;public class LRUCache {<br>    class DLinkedNode {<br>        int key;<br>        int value;<br>        DLinkedNode prev;<br>        DLinkedNode next;<br>        public DLinkedNode() {}<br>        public DLinkedNode(int _key, int _value) {key &#x3D; _key; value &#x3D; _value;}<br>    }</p>
-<pre><code>private Map&lt;Integer, DLinkedNode&gt; cache = new HashMap&lt;Integer, DLinkedNode&gt;();
-private int size;
-private int capacity;
-private DLinkedNode head, tail;
-
-public LRUCache(int capacity) &#123;
-    this.size = 0;
-    this.capacity = capacity;
-    // 使用伪头部和伪尾部节点
-    head = new DLinkedNode();
-    tail = new DLinkedNode();
-    head.next = tail;
-    tail.prev = head;
-&#125;
-
-public int get(int key) &#123;
-    DLinkedNode node = cache.get(key);
-    if (node == null) &#123;
-        return -1;
-    &#125;
-    // 如果 key 存在，先通过哈希表定位，再移到头部
-    moveToHead(node);
-    return node.value;
-&#125;
-
-public void put(int key, int value) &#123;
-    DLinkedNode node = cache.get(key);
-    if (node == null) &#123;
-        // 如果 key 不存在，创建一个新的节点
-        DLinkedNode newNode = new DLinkedNode(key, value);
-        // 添加进哈希表
-        cache.put(key, newNode);
-        // 添加至双向链表的头部
-        addToHead(newNode);
-        ++size;
-        if (size &gt; capacity) &#123;
-            // 如果超出容量，删除双向链表的尾部节点
-            DLinkedNode tail = removeTail();
-            // 删除哈希表中对应的项
-            cache.remove(tail.key);
-            --size;
-        &#125;
-    &#125;
-    else &#123;
-        // 如果 key 存在，先通过哈希表定位，再修改 value，并移到头部
-        node.value = value;
-        moveToHead(node);
-    &#125;
-&#125;
-
-private void addToHead(DLinkedNode node) &#123;
-    node.prev = head;
-    node.next = head.next;
-    head.next.prev = node;
-    head.next = node;
-&#125;
-
-private void removeNode(DLinkedNode node) &#123;
-    node.prev.next = node.next;
-    node.next.prev = node.prev;
-&#125;
-
-private void moveToHead(DLinkedNode node) &#123;
-    removeNode(node);
-    addToHead(node);
-&#125;
-
-private DLinkedNode removeTail() &#123;
-    DLinkedNode res = tail.prev;
-    removeNode(res);
-    return res;
-&#125;
-</code></pre>
-<p>}</p>
-<p>&#96;</p>
-<h3 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h3><p>类加载：双亲委派模型<br>双亲委派模型的工作流程是：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上，因此，所有的类加载请求最终都应该被传递到顶层的启动类加载器中，只有当父加载器在它的搜索范围中没有找到所需的类时，即无法完成该加载，子加载器才会尝试自己去加载该类。</p>
+            <p>绘制动画</p>
+<p>context的意义？</p>
+<p>build gradle module</p>
+<p>xml布局中通过类名，反射应用构造函数，构造对应的java类型。</p>
+<p>自定义属性自定义主题有的话如何去解析，用defStyleAttr,</p>
+<p><img src="C:\Users\84986\AppData\Roaming\Typora\typora-user-images\image-20230708124048129.png" alt="image-20230708124048129"></p>
+<p>onmeasure 具体规划</p>
+<p>onlayout 所有的子view进行布局</p>
+<p>ondraw动画绘制1s多少帧</p>
+<p>可以使用 <code>git pull</code> 命令将远程主分支的最新更改拉取到本地主分支中。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
